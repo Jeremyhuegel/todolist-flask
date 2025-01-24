@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, abort, request, make_response
+from flask import Flask, jsonify, abort, request, make_response, send_file
 from flaskext.mysql import MySQL
 from flask_cors import CORS
+
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -9,9 +10,9 @@ app = Flask(__name__)
 CORS(app)
 
 # Configuring MySQL database
-app.config['MYSQL_DATABASE_HOST'] = 'todo-database-server'
-app.config['MYSQL_DATABASE_USER'] = 'chandra'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Chandra@123'
+app.config['MYSQL_DATABASE_HOST'] = 'terraform-20250123212432018600000001.cvyw6igek2bp.us-east-1.rds.amazonaws.com'
+app.config['MYSQL_DATABASE_USER'] = 'jeremyh'
+app.config['MYSQL_DATABASE_PASSWORD'] = '11111111'
 app.config['MYSQL_DATABASE_DB'] = 'todo_db'
 app.config['MYSQL_DATABASE_PORT'] = 3306
 mysql = MySQL()
@@ -96,7 +97,7 @@ def remove_task(task):
 @app.route('/')
 def home():
     """Home route that returns a welcome message."""
-    return "Welcome to to-do API Service"
+    return send_file['index.html']
 
 @app.route('/todos', methods=['GET'])
 def get_tasks():
