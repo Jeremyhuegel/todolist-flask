@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, abort, request, make_response, send_file
+from flask import Flask, jsonify, abort, request, make_response, send_file, render_template
 from flaskext.mysql import MySQL
 from flask_cors import CORS
 
@@ -97,7 +97,7 @@ def remove_task(task):
 @app.route('/')
 def home():
     """Home route that returns a welcome message."""
-    return send_file['index.html']
+    return "WElcome to todo api"
 
 @app.route('/todos', methods=['GET'])
 def get_tasks():
@@ -153,4 +153,4 @@ def bad_request(error):
 if __name__== '__main__':
     init_todo_db()
 
-    app.run(host='127.0.0.1', port=80)
+    app.run(host='127.0.0.1', port=5000)
